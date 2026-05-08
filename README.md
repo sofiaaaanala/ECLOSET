@@ -1,5 +1,4 @@
 # ECLOSET
-# ECloset
 
 ## Descripción
 ECloset es una plataforma web de moda circular. La aplicación combina un closet digital, recomendaciones de outfits basadas en algoritmos y un marketplace de compra y venta de ropa usada dentro de un mismo entorno.
