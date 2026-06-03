@@ -63,5 +63,67 @@
 //     </div>
 //   );
 // }
+//_________________________________
+//export default function Home() { return <h1>Hola Mundo</h1> }
 
-export default function Home() { return <h1>Hola Mundo</h1> }
+
+// 1. Importamos el componente Link para poder viajar entre pantallas
+import Link from 'next/link';
+
+export default function Home() {
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100vh',
+      fontFamily: 'sans-serif',
+      backgroundColor: '#f9f5ff', // Un fondo lila clarito hermoso para ECloset
+      padding: '20px',
+      textAlign: 'center'
+    }}>
+      
+      {/* Título y Logo de bienvenida */}
+      <h1 style={{ fontSize: '3rem', color: '#6b21a8', marginBottom: '10px' }}>
+        ECloset 👗
+      </h1>
+      <p style={{ fontSize: '1.2rem', color: '#4b5563', marginBottom: '30px', maxWidth: '400px' }}>
+        Tu guardarropa inteligente y marketplace de moda circular en un solo lugar.
+      </p>
+
+      {/* Contenedor de los botones */}
+      <div style={{ display: 'flex', gap: '20px' }}>
+        
+        {/* BOTÓN 1: Nos enruta a la carpeta /login */}
+        <Link href="/login" style={{
+          padding: '12px 24px',
+          backgroundColor: '#7c3aed', // Violeta principal
+          color: 'white',
+          textDecoration: 'none',
+          borderRadius: '8px',
+          fontWeight: 'bold',
+          boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)'
+        }}>
+          Iniciar Sesión
+        </Link>
+
+        {/* BOTÓN 2: Nos enruta a la carpeta /register */}
+        <Link href="/register" style={{
+          padding: '12px 24px',
+          backgroundColor: 'white',
+          color: '#7c3aed',
+          border: '2px solid #7c3aed',
+          textDecoration: 'none',
+          borderRadius: '8px',
+          fontWeight: 'bold',
+          boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)'
+        }}>
+          Crear Cuenta
+        </Link>
+
+      </div>
+
+    </div>
+  );
+}
