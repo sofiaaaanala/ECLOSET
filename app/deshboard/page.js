@@ -7,16 +7,45 @@ export default function DashboardPage() {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   const userData = localStorage.getItem('user');
     
-    if (!token) {
-      router.push('/login');
-    } else if (userData) {
-      setUser(JSON.parse(userData));
-    }
+  //   if (!token) {
+  //     router.push('/login');
+  //   } else if (userData) {
+  //     setUser(JSON.parse(userData));
+  //   }
+  // }, [router]);
+
+  
+    useEffect(() => {
+    // Creamos una función interna para leer los datos de forma asíncrona
+    const cargarDatosUsuario = async () => {
+      const token = localStorage.getItem('token');
+      const userData = localStorage.getItem('user');
+
+      // Si no hay token, redirigimos y frenamos
+      if (!token) {
+        router.push('/login');
+        return;
+      }
+
+      // Si hay datos, los procesamos de forma segura
+      if (userData) {
+        try {
+          const parsedUser = JSON.parse(userData);
+          setUser(parsedUser);
+        } catch (error) {
+          console.error("Error al parsear el usuario:", error);
+        }
+      }
+    };
+
+    // Ejecutamos la función
+    cargarDatosUsuario();
   }, [router]);
+
 
   const handleLogout = () => {
     localStorage.removeItem('token');
