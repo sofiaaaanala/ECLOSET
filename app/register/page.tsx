@@ -22,7 +22,7 @@ export default function RegisterPage() {
       setError('La contraseña debe tener al menos 6 caracteres');
       return;
     }
-    
+     
     setLoading(true);
     
     try {
@@ -43,7 +43,7 @@ export default function RegisterPage() {
       
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
-      router.push('/dashboard');
+      router.push('/onboarding');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -125,7 +125,7 @@ export default function RegisterPage() {
         
         <p className="text-center text-gray-600 mt-6">
           ¿Ya tienes cuenta?{' '}
-          <a href="/login" className="text-emerald-600 hover:text-emerald-700 font-medium">
+          <a href="/" className="text-emerald-600 hover:text-emerald-700 font-medium">
             Inicia sesión
           </a>
         </p>
