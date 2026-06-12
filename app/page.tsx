@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+//import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -58,7 +59,7 @@ export default function Home() {
         {/* Bottom quote */}
         <div className="relative z-10 border-t border-[#3d5c3e] pt-6">
           <p className="text-[#8FAF87] text-xs leading-relaxed italic" style={{ fontWeight: 300 }}>
-            "Style is a way to say who you are without having to speak."
+            {'"Style is a way to say who you are without having to speak."'}
           </p>
           <p className="text-[#4a6e4b] text-xs mt-1 tracking-wider">— Rachel Zoe</p>
         </div>
@@ -192,6 +193,7 @@ export default function Home() {
 
             {/* Google */}
             <button
+              //onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
               className="w-full py-3.5 text-sm flex items-center justify-center gap-3 transition-all"
               style={{
                 background: "#fff",
