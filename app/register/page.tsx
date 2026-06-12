@@ -54,7 +54,7 @@ export default function Register() {
 
         <div className="relative z-10 border-t border-[#3d5c3e] pt-6">
           <p className="text-[#8FAF87] text-xs leading-relaxed italic" style={{ fontWeight: 300 }}>
-            "Fashion is the armor to survive the reality of everyday life."
+            {'"Fashion is the armor to survive the reality of everyday life."'}
           </p>
           <p className="text-[#4a6e4b] text-xs mt-1 tracking-wider">— Bill Cunningham</p>
         </div>
