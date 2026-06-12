@@ -239,7 +239,7 @@ export default function Register() {
 
           <p className="text-center text-xs mt-6" style={{ color: "#b0b0a5" }}>
             Already have an account?{" "}
-            <Link href="/login" className="font-medium" style={{ color: "#2C3E2D" }}>
+            <Link href="/" className="font-medium" style={{ color: "#2C3E2D" }}>
               Sign in →
             </Link>
           </p>
