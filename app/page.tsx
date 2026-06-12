@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 export default function Home() {
   const [showPassword, setShowPassword] = useState(false);
@@ -190,6 +191,7 @@ export default function Home() {
 
             {/* Google */}
             <button
+              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
               className="w-full py-3.5 text-sm flex items-center justify-center gap-3 transition-all"
               style={{
                 background: "#fff",
