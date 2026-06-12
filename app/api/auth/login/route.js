@@ -1,55 +1,47 @@
 import { NextResponse } from 'next/server';
-import { Sequelize } from 'sequelize';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './database.sqlite',
-});
-
-const User = sequelize.define('User', {
-  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-  username: { type: Sequelize.STRING, allowNull: false, unique: true },
-  email: { type: Sequelize.STRING, allowNull: false, unique: true },
-  password: { type: Sequelize.STRING, allowNull: false },
-}, { timestamps: true });
+import { loginUser, generateToken } from '@/lib/auth.js';
 
 export async function POST(request) {
   try {
-    await sequelize.sync();
-    
     const { email, password } = await request.json();
     
     if (!email || !password) {
-      return NextResponse.json({ error: 'Email y contraseña son obligatorios' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Email y contraseña son obligatorios' },
+        { status: 400 }
+      );
     }
     
-    const user = await User.findOne({ where: { email } });
+    // Iniciar sesión usando la función
+    const user = await loginUser(email, password);
     
-    if (!user) {
-      return NextResponse.json({ error: 'Credenciales incorrectas' }, { status: 401 });
-    }
+    // Generar token
+    const token = generateToken(user);
     
-    const isValid = await bcrypt.compare(password, user.password);
-    
-    if (!isValid) {
-      return NextResponse.json({ error: 'Credenciales incorrectas' }, { status: 401 });
-    }
-    
-    const token = jwt.sign(
-      { id: user.id, email: user.email, username: user.username },
-      process.env.JWT_SECRET || 'mi_secreto_temporal',
-      { expiresIn: '7d' }
-    );
+    // Determinar redirección según si completó preferencias
+    const redirectTo = user.preferencias_completadas ? '/dashboard' : '/preferencias';
     
     return NextResponse.json({
+      success: true,
+      message: 'Inicio de sesión exitoso',
+      user,
       token,
-      user: { id: user.id, username: user.username, email: user.email }
+      redirectTo,
     });
     
   } catch (error) {
     console.error('Error en login:', error);
-    return NextResponse.json({ error: 'Error interno del servidor' }, { status: 500 });
+    
+    if (error.message === 'Credenciales incorrectas') {
+      return NextResponse.json(
+        { error: error.message },
+        { status: 401 }
+      );
+    }
+    
+    return NextResponse.json(
+      { error: 'Error interno del servidor' },
+      { status: 500 }
+    );
   }
 }
