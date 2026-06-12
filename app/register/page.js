@@ -32,7 +32,8 @@ export default function RegisterPage() {
         body: JSON.stringify({
           username: form.username,
           email: form.email,
-          password: form.password
+          password: form.password,
+          confirmPassword: form.confirmPassword
         }),
       });
       
