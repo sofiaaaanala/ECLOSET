@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const router = useRouter();
   return (
     <div className="min-h-screen flex font-sans" style={{ background: "#F9F5F0" }}>
 
@@ -168,6 +169,7 @@ export default function Home() {
 
             {/* CTA */}
             <button
+              onClick={() => router.push("/home")}
               className="w-full py-4 text-sm font-medium tracking-widest uppercase transition-all mt-2"
               style={{
                 background: "#2C3E2D",
