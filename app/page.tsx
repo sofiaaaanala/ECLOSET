@@ -194,6 +194,7 @@ export default function Home() {
             {/* Google */}
             <button
               //onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() => window.location.href = '/api/auth/google'}
               className="w-full py-3.5 text-sm flex items-center justify-center gap-3 transition-all"
               style={{
                 background: "#fff",
