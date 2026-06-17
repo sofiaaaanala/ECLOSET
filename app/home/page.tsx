@@ -245,15 +245,16 @@ export default function HomePage() {
           </span>
         </h3>
 
-        <button
-          className="mt-5 px-5 py-3 rounded-[12px] text-[11px] uppercase tracking-[0.18em]"
+       <Link
+          href="/closet"
+          className="mt-5 inline-block px-5 py-3 rounded-[12px] text-[11px] uppercase tracking-[0.18em]"
           style={{
             background: "#2C3E2D",
             color: "#F9F5F0",
           }}
-        >
+      >
           Entrar a mi closet
-        </button>
+      </Link>
       </section>
 
       {/* BOTTOM NAV */}
@@ -291,22 +292,23 @@ export default function HomePage() {
   </button>
 
   {/* CLOSET */}
-  <button
-    className="w-14 h-14 rounded-full flex items-center justify-center -mt-10 relative"
-    style={{
-      background: "#2C3E2D",
-      boxShadow: "0 10px 24px rgba(44,62,45,0.22)",
-    }}
-  >
-    <Shirt size={22} color="#F9F5F0" />
+ <Link
+  href="/closet"
+  className="w-14 h-14 rounded-full flex items-center justify-center -mt-10 relative"
+  style={{
+    background: "#2C3E2D",
+    boxShadow: "0 10px 24px rgba(44,62,45,0.22)",
+  }}
+>
+  <Shirt size={22} color="#F9F5F0" />
 
-    <div
-      className="absolute -bottom-5 text-[9px] uppercase tracking-[0.14em]"
-      style={{ color: "#2C3E2D" }}
-    >
-      Closet
-    </div>
-  </button>
+  <div
+    className="absolute -bottom-5 text-[9px] uppercase tracking-[0.14em]"
+    style={{ color: "#2C3E2D" }}
+  >
+    Closet
+  </div>
+</Link>
 
   {/* MENSAJES */}
   <button className="flex flex-col items-center gap-1">
