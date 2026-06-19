@@ -37,6 +37,7 @@ model Prenda {
   tipo        String
   color       String
   temporada   String?
+  etiquetas   String?
   marca       String?
   talle       String?
   imagen_url  String?
