@@ -1,41 +1,43 @@
 import { NextResponse } from 'next/server';
-import { Prenda, syncDatabase } from '@/lib/models/index.js';
+import prisma from '@/lib/prisma';
 import { verifyToken } from '@/lib/auth.js';
 
-let dbInitialized = false;
-const initDB = async () => {
-  if (!dbInitialized) {
-    await syncDatabase();
-    dbInitialized = true;
-  }
-};
-
-// Helper: Verificar que la prenda pertenece al usuario
-const verificarPropiedad = async (id, usuarioId) => {
-  const prenda = await Prenda.findByPk(id);
-  if (!prenda) return { error: 'Prenda no encontrada', status: 404 };
-  if (prenda.usuario_id !== usuarioId) return { error: 'No autorizado', status: 403 };
-  return { prenda };
-};
-
-// GET: Obtener una prenda específica
+// GET: Obtener una prenda por ID
 export async function GET(request, { params }) {
   try {
-    await initDB();
-    const { id } = await params;
-    
     const authHeader = request.headers.get('authorization');
-    const token = authHeader?.split(' ')[1];
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
+    }
+
+    const token = authHeader.split(' ')[1];
     const decoded = verifyToken(token);
-    
-    if (!decoded) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    
-    const result = await verificarPropiedad(id, decoded.id);
-    if (result.error) return NextResponse.json({ error: result.error }, { status: result.status });
-    
-    return NextResponse.json({ prenda: result.prenda });
-    
+
+    if (!decoded) {
+      return NextResponse.json({ error: 'Token inválido' }, { status: 401 });
+    }
+
+    const id = parseInt(params.id);
+
+    const prenda = await prisma.prenda.findFirst({
+      where: {
+        id_prenda: id,
+        id_usuario: decoded.id,
+      },
+    });
+
+    if (!prenda) {
+      return NextResponse.json(
+        { error: 'Prenda no encontrada' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ prenda });
+
   } catch (error) {
+    console.error('Error GET prenda:', error);
     return NextResponse.json({ error: 'Error interno' }, { status: 500 });
   }
 }
@@ -43,57 +45,107 @@ export async function GET(request, { params }) {
 // PUT: Actualizar una prenda
 export async function PUT(request, { params }) {
   try {
-    await initDB();
-    const { id } = await params;
-    
     const authHeader = request.headers.get('authorization');
-    const token = authHeader?.split(' ')[1];
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
+    }
+
+    const token = authHeader.split(' ')[1];
     const decoded = verifyToken(token);
-    
-    if (!decoded) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    
-    const result = await verificarPropiedad(id, decoded.id);
-    if (result.error) return NextResponse.json({ error: result.error }, { status: result.status });
-    
-    const { nombre, descripcion, imagen_url, categoria, talle, color, etiquetas } = await request.json();
-    
-    await result.prenda.update({
-      nombre: nombre || result.prenda.nombre,
-      descripcion: descripcion !== undefined ? descripcion : result.prenda.descripcion,
-      imagen_url: imagen_url || result.prenda.imagen_url,
-      categoria: categoria || result.prenda.categoria,
-      talle: talle !== undefined ? talle : result.prenda.talle,
-      color: color !== undefined ? color : result.prenda.color,
-      etiquetas: etiquetas || result.prenda.etiquetas,
+
+    if (!decoded) {
+      return NextResponse.json({ error: 'Token inválido' }, { status: 401 });
+    }
+
+    const id = parseInt(params.id);
+
+    const existente = await prisma.prenda.findFirst({
+      where: {
+        id_prenda: id,
+        id_usuario: decoded.id,
+      },
     });
-    
-    return NextResponse.json({ prenda: result.prenda });
-    
+
+    if (!existente) {
+      return NextResponse.json(
+        { error: 'Prenda no encontrada' },
+        { status: 404 }
+      );
+    }
+
+    const body = await request.json();
+
+    const prendaActualizada = await prisma.prenda.update({
+      where: {
+        id_prenda: id,
+      },
+      data: {
+        nombre: body.nombre,
+        tipo: body.tipo,
+        color: body.color,
+        talle: body.talle,
+        descripcion: body.descripcion,
+        temporada: body.temporada,
+        marca: body.marca,
+        precio: body.precio,
+        descuento: body.descuento,
+        imagen_url: body.imagen_url,
+      },
+    });
+
+    return NextResponse.json({ prenda: prendaActualizada });
+
   } catch (error) {
-    return NextResponse.json({ error: 'Error interno' }, { status: 500 });
+    console.error('Error PUT prenda:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
 // DELETE: Eliminar una prenda
 export async function DELETE(request, { params }) {
   try {
-    await initDB();
-    const { id } = await params;
-    
     const authHeader = request.headers.get('authorization');
-    const token = authHeader?.split(' ')[1];
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
+    }
+
+    const token = authHeader.split(' ')[1];
     const decoded = verifyToken(token);
-    
-    if (!decoded) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
-    
-    const result = await verificarPropiedad(id, decoded.id);
-    if (result.error) return NextResponse.json({ error: result.error }, { status: result.status });
-    
-    await result.prenda.destroy();
-    
-    return NextResponse.json({ message: 'Prenda eliminada correctamente' });
-    
+
+    if (!decoded) {
+      return NextResponse.json({ error: 'Token inválido' }, { status: 401 });
+    }
+
+    const id = parseInt(params.id);
+
+    const existente = await prisma.prenda.findFirst({
+      where: {
+        id_prenda: id,
+        id_usuario: decoded.id,
+      },
+    });
+
+    if (!existente) {
+      return NextResponse.json(
+        { error: 'Prenda no encontrada' },
+        { status: 404 }
+      );
+    }
+
+    await prisma.prenda.delete({
+      where: {
+        id_prenda: id,
+      },
+    });
+
+    return NextResponse.json({
+      message: 'Prenda eliminada correctamente',
+    });
+
   } catch (error) {
-    return NextResponse.json({ error: 'Error interno' }, { status: 500 });
+    console.error('Error DELETE prenda:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

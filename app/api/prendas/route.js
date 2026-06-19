@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { NextResponse } from 'next/server';
 // import { Prenda, syncDatabase } from '@/lib/models/index.js';
 // import { verifyToken } from '@/lib/auth.js';
@@ -88,6 +89,12 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { verifyToken } from '@/lib/auth.js';
 
+=======
+import { NextResponse } from 'next/server';
+import prisma from '@/lib/prisma';
+import { verifyToken } from '@/lib/auth.js';
+
+>>>>>>> c288ec095e3c1a150ec685593bd5da517f6f53ac
 // GET: Obtener todas las prendas del usuario autenticado
 export async function GET(request) {
   try {
@@ -103,7 +110,11 @@ export async function GET(request) {
       return NextResponse.json({ error: 'Token inválido' }, { status: 401 });
     }
 
+<<<<<<< HEAD
     const prendas = await prisma.prendas.findMany({
+=======
+    const prendas = await prisma.prenda.findMany({
+>>>>>>> c288ec095e3c1a150ec685593bd5da517f6f53ac
       where: { id_usuario: decoded.id },
       orderBy: { createdAt: 'desc' },
     });
@@ -143,7 +154,11 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Nombre, tipo, talle y color son obligatorios' }, { status: 400 });
     }
 
+<<<<<<< HEAD
     const prenda = await prisma.prendas.create({
+=======
+    const prenda = await prisma.prenda.create({
+>>>>>>> c288ec095e3c1a150ec685593bd5da517f6f53ac
       data: {
         nombre,
         tipo,

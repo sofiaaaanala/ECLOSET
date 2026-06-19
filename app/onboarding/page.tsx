@@ -65,7 +65,7 @@ export default function Onboarding() {
     if (step < 3) {
       setStep(step + 1);
     } else {
-      router.push("/dashboard");
+      router.push("/home");
     }
   };
 
@@ -300,7 +300,7 @@ export default function Onboarding() {
             {step === 3 && (
               <button
                 type="button"
-                onClick={() => router.push("/dashboard")}
+                onClick={() => router.push("/home")}
                 className="w-full py-2 text-xs"
                 style={{ color: "#c0bdb7", background: "transparent", border: "none", cursor: "pointer" }}
               >
