@@ -20,7 +20,7 @@ export default function BottomNavigation() {
         boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
       }}
     >
-      <Link href="/" className="flex flex-col items-center gap-1">
+      <Link href="/home" className="flex flex-col items-center gap-1">
         <Home size={21} color="#9a9a8e" />
         <span
           className="text-[9px] uppercase tracking-[0.14em]"
