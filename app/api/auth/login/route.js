@@ -19,15 +19,33 @@ export async function POST(request) {
     const token = generateToken(user);
     
     // Determinar redirección según si completó preferencias
-    const redirectTo = user.preferencias_completadas ? '/dashboard' : '/preferencias';
+    const redirectTo = user.preferencias_completadas ? '/dashboard' : '/home';
     
-    return NextResponse.json({
+    // return NextResponse.json({
+    //   success: true,
+    //   message: 'Inicio de sesión exitoso',
+    //   user,
+    //   token,
+    //   redirectTo,
+    // });
+
+      const response = NextResponse.json({
       success: true,
       message: 'Inicio de sesión exitoso',
       user,
-      token,
       redirectTo,
     });
+
+    // Guarda el token en una cookie que dura 7 días
+    response.cookies.set('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7, // 7 días
+      path: '/',
+    });
+
+    return response;
     
   } catch (error) {
     console.error('Error en login:', error);

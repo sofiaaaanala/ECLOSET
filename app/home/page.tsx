@@ -245,16 +245,15 @@ export default function HomePage() {
           </span>
         </h3>
 
-       <Link
-          href="/closet"
-          className="mt-5 inline-block px-5 py-3 rounded-[12px] text-[11px] uppercase tracking-[0.18em]"
+        <button
+          className="mt-5 px-5 py-3 rounded-[12px] text-[11px] uppercase tracking-[0.18em]"
           style={{
             background: "#2C3E2D",
             color: "#F9F5F0",
           }}
-      >
+        >
           Entrar a mi closet
-      </Link>
+        </button>
       </section>
 
       {/* BOTTOM NAV */}
@@ -290,10 +289,9 @@ export default function HomePage() {
       Market
     </span>
   </button>
-
-  {/* CLOSET */}
- <Link
-  href="/closet"
+  {/* OUTFITS */}
+<Link
+  href="/outfits"
   className="w-14 h-14 rounded-full flex items-center justify-center -mt-10 relative"
   style={{
     background: "#2C3E2D",
