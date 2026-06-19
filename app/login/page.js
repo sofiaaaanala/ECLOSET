@@ -25,9 +25,10 @@ export default function LoginPage() {
       
       if (!res.ok) throw new Error(data.error || 'Error al iniciar sesión');
       
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      router.push('/dashboard');
+      // localStorage.setItem('token', data.token);
+      // localStorage.setItem('user', JSON.stringify(data.user));
+      // router.push('/dashboard');
+      router.push(data.redirectTo);
     } catch (err) {
       setError(err.message);
     } finally {

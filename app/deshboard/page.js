@@ -19,39 +19,81 @@ export default function DashboardPage() {
   // }, [router]);
 
   
-    useEffect(() => {
-    // Creamos una función interna para leer los datos de forma asíncrona
-    const cargarDatosUsuario = async () => {
-      const token = localStorage.getItem('token');
-      const userData = localStorage.getItem('user');
+  //   useEffect(() => {
+  //   // Creamos una función interna para leer los datos de forma asíncrona
+  //    const cargarDatosUsuario = async () => {
+  //   try {
+  //     const res = await fetch('/api/auth/me');
+      
+  //     if (!res.ok) {
+  //       router.push('/login');
+  //       return;
+  //     }
+      
+  //     const data = await res.json();
+  //     setUser(data.user);
+  //   } catch (error) {
+  //     console.error("Error al cargar usuario:", error);
+  //     router.push('/login');
+  //   }
+  // };
+  //   // const cargarDatosUsuario = async () => {
+  //   //   const token = localStorage.getItem('token');
+  //   //   const userData = localStorage.getItem('user');
 
-      // Si no hay token, redirigimos y frenamos
-      if (!token) {
+  //   //   // Si no hay token, redirigimos y frenamos
+  //   //   if (!token) {
+  //   //     router.push('/login');
+  //   //     return;
+  //   //   }
+
+  //   //   // Si hay datos, los procesamos de forma segura
+  //   //   if (userData) {
+  //   //     try {
+  //   //       const parsedUser = JSON.parse(userData);
+  //   //       setUser(parsedUser);
+  //   //     } catch (error) {
+  //   //       console.error("Error al parsear el usuario:", error);
+  //   //     }
+  //   //   }
+  //   // };
+
+  //   // Ejecutamos la función
+  //   cargarDatosUsuario();
+  // }, [router]);
+
+  useEffect(() => {
+  const cargarDatosUsuario = async () => {
+    try {
+      const res = await fetch('/api/auth/me');
+      
+      if (!res.ok) {
         router.push('/login');
         return;
       }
-
-      // Si hay datos, los procesamos de forma segura
-      if (userData) {
-        try {
-          const parsedUser = JSON.parse(userData);
-          setUser(parsedUser);
-        } catch (error) {
-          console.error("Error al parsear el usuario:", error);
-        }
-      }
-    };
-
-    // Ejecutamos la función
-    cargarDatosUsuario();
-  }, [router]);
-
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    router.push('/login');
+      
+      const data = await res.json();
+      setUser(data.user);
+    } catch (error) {
+      console.error("Error al cargar usuario:", error);
+      router.push('/login');
+    }
   };
+
+  cargarDatosUsuario();
+}, [router]);
+
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('user');
+  //   router.push('/login');
+  // };
+
+  const handleLogout = async () => {
+  await fetch('/api/auth/logout', { method: 'POST' });
+  router.push('/login');
+};
 
   if (!user) {
     return (
