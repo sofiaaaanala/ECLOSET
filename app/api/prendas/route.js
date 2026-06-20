@@ -57,14 +57,14 @@ export async function POST(request) {
     const nombre = formData.get('nombre');
     const tipo = formData.get('tipo');
     const talle = formData.get('talle');
-    const color = formData.get('color');
+    const color = formData.get('color') || '';
     const descripcion = formData.get('descripcion') || '';
     const etiquetas = formData.get('etiquetas') || '[]';
 
     const imagenFile = formData.get('imagen');
 
-    if (!nombre || !tipo || !talle || !color) {
-      return NextResponse.json({ error: 'Nombre, tipo, talle y color son obligatorios' }, { status: 400 });
+    if (!nombre || !tipo || !talle) {
+      return NextResponse.json({ error: 'Nombre, tipo y talle son obligatorios' }, { status: 400 });
     }
 
     // Subir imagen a ImageKit si se mandó una
@@ -91,7 +91,7 @@ export async function POST(request) {
         nombre,
         tipo,
         talle,
-        color,
+        color: color || "",
         descripcion,
         etiquetas,
         id_usuario: decoded.id,

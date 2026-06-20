@@ -148,11 +148,11 @@ export default function NuevaPrendaPage() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center px-4"
+      className="fixed inset-0 z-70 flex items-center justify-center px-4"
       style={{ backgroundColor: "rgba(26,26,26,0.45)", backdropFilter: "blur(4px)" }}
     >
       <div
-        className="relative w-full max-w-md max-h-[92vh] overflow-y-auto rounded-[24px] px-6 py-7"
+        className="relative w-full max-w-md max-h-[92vh] overflow-y-auto rounded-3xl px-6 py-7"
         style={{
           background: "#F9F5F0",
           boxShadow: "0 8px 48px rgba(0,0,0,0.18)",
@@ -189,7 +189,7 @@ export default function NuevaPrendaPage() {
           onDragLeave={() => setIsDragging(false)}
           onDrop={onDrop}
           onClick={() => fileInputRef.current?.click()}
-          className="relative w-full rounded-[16px] overflow-hidden cursor-pointer transition-all mb-5"
+          className="relative w-full rounded-2xl overflow-hidden cursor-pointer transition-all mb-5"
           style={{
             height: "180px",
             border: isDragging
@@ -202,11 +202,13 @@ export default function NuevaPrendaPage() {
         >
           {imagenPreview ? (
             <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={imagenPreview}
                 alt="Preview"
                 className="w-full h-full object-cover"
               />
+
               <div
                 className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
                 style={{ background: "rgba(0,0,0,0.35)" }}
@@ -296,7 +298,7 @@ export default function NuevaPrendaPage() {
 
           {mostrarCategorias && (
             <div
-              className="absolute z-10 w-full mt-1 rounded-[12px] overflow-hidden"
+              className="absolute z-10 w-full mt-1 rounded-xl overflow-hidden"
               style={{
                 background: "#fff",
                 border: "1px solid #e8e4de",
@@ -355,7 +357,7 @@ export default function NuevaPrendaPage() {
                 key={t}
                 type="button"
                 onClick={() => setTalle(t)}
-                className="px-4 py-2 rounded-[10px] text-xs font-medium transition"
+                className="px-4 py-2 rounded-xl text-xs font-medium transition"
                 style={{
                   background: talle === t ? "#2C3E2D" : "#fff",
                   color: talle === t ? "#F9F5F0" : "#4a4a42",
@@ -422,7 +424,7 @@ export default function NuevaPrendaPage() {
             <button
               type="button"
               onClick={() => agregarEtiqueta(etiquetaInput)}
-              className="px-3 rounded-[12px] transition"
+              className="px-3 rounded-xl transition"
               style={{ background: "#2C3E2D", color: "#F9F5F0" }}
             >
               <Plus size={16} />
@@ -481,7 +483,7 @@ export default function NuevaPrendaPage() {
         {/* Error */}
         {error && (
           <p
-            className="text-xs mb-4 px-3 py-2 rounded-[10px]"
+            className="text-xs mb-4 px-3 py-2 rounded-xl"
             style={{ background: "rgba(201,87,87,0.08)", color: "#b85555" }}
           >
             {error}
@@ -493,7 +495,7 @@ export default function NuevaPrendaPage() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="flex-1 py-3.5 rounded-[12px] text-[11px] tracking-[0.18em] uppercase transition"
+            className="flex-1 py-3.5 rounded-xl text-[11px] tracking-[0.18em] uppercase transition"
             style={{
               background: "#fff",
               border: "1px solid #e8e4de",
@@ -506,7 +508,7 @@ export default function NuevaPrendaPage() {
             type="button"
             onClick={handleSubmit}
             disabled={loading}
-            className="flex-1 py-3.5 rounded-[12px] text-[11px] tracking-[0.18em] uppercase transition"
+            className="flex-1 py-3.5 rounded-xl text-[11px] tracking-[0.18em] uppercase transition"
             style={{
               background: loading ? "#9a9a8e" : "#2C3E2D",
               color: "#F9F5F0",
