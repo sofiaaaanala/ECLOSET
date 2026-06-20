@@ -46,9 +46,11 @@ export type PrendaMinAggregateOutputType = {
   tipo: string | null
   color: string | null
   temporada: string | null
+  etiquetas: string | null
   marca: string | null
   talle: string | null
   imagen_url: string | null
+  imagen_fileId: string | null
   descripcion: string | null
   fecha_venta: Date | null
   precio: number | null
@@ -64,9 +66,11 @@ export type PrendaMaxAggregateOutputType = {
   tipo: string | null
   color: string | null
   temporada: string | null
+  etiquetas: string | null
   marca: string | null
   talle: string | null
   imagen_url: string | null
+  imagen_fileId: string | null
   descripcion: string | null
   fecha_venta: Date | null
   precio: number | null
@@ -82,9 +86,11 @@ export type PrendaCountAggregateOutputType = {
   tipo: number
   color: number
   temporada: number
+  etiquetas: number
   marca: number
   talle: number
   imagen_url: number
+  imagen_fileId: number
   descripcion: number
   fecha_venta: number
   precio: number
@@ -116,9 +122,11 @@ export type PrendaMinAggregateInputType = {
   tipo?: true
   color?: true
   temporada?: true
+  etiquetas?: true
   marca?: true
   talle?: true
   imagen_url?: true
+  imagen_fileId?: true
   descripcion?: true
   fecha_venta?: true
   precio?: true
@@ -134,9 +142,11 @@ export type PrendaMaxAggregateInputType = {
   tipo?: true
   color?: true
   temporada?: true
+  etiquetas?: true
   marca?: true
   talle?: true
   imagen_url?: true
+  imagen_fileId?: true
   descripcion?: true
   fecha_venta?: true
   precio?: true
@@ -152,9 +162,11 @@ export type PrendaCountAggregateInputType = {
   tipo?: true
   color?: true
   temporada?: true
+  etiquetas?: true
   marca?: true
   talle?: true
   imagen_url?: true
+  imagen_fileId?: true
   descripcion?: true
   fecha_venta?: true
   precio?: true
@@ -257,9 +269,11 @@ export type PrendaGroupByOutputType = {
   tipo: string
   color: string
   temporada: string | null
+  etiquetas: string | null
   marca: string | null
   talle: string | null
   imagen_url: string | null
+  imagen_fileId: string | null
   descripcion: string | null
   fecha_venta: Date | null
   precio: number | null
@@ -298,9 +312,11 @@ export type PrendaWhereInput = {
   tipo?: Prisma.StringFilter<"Prenda"> | string
   color?: Prisma.StringFilter<"Prenda"> | string
   temporada?: Prisma.StringNullableFilter<"Prenda"> | string | null
+  etiquetas?: Prisma.StringNullableFilter<"Prenda"> | string | null
   marca?: Prisma.StringNullableFilter<"Prenda"> | string | null
   talle?: Prisma.StringNullableFilter<"Prenda"> | string | null
   imagen_url?: Prisma.StringNullableFilter<"Prenda"> | string | null
+  imagen_fileId?: Prisma.StringNullableFilter<"Prenda"> | string | null
   descripcion?: Prisma.StringNullableFilter<"Prenda"> | string | null
   fecha_venta?: Prisma.DateTimeNullableFilter<"Prenda"> | Date | string | null
   precio?: Prisma.FloatNullableFilter<"Prenda"> | number | null
@@ -317,9 +333,11 @@ export type PrendaOrderByWithRelationInput = {
   tipo?: Prisma.SortOrder
   color?: Prisma.SortOrder
   temporada?: Prisma.SortOrderInput | Prisma.SortOrder
+  etiquetas?: Prisma.SortOrderInput | Prisma.SortOrder
   marca?: Prisma.SortOrderInput | Prisma.SortOrder
   talle?: Prisma.SortOrderInput | Prisma.SortOrder
   imagen_url?: Prisma.SortOrderInput | Prisma.SortOrder
+  imagen_fileId?: Prisma.SortOrderInput | Prisma.SortOrder
   descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_venta?: Prisma.SortOrderInput | Prisma.SortOrder
   precio?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -339,9 +357,11 @@ export type PrendaWhereUniqueInput = Prisma.AtLeast<{
   tipo?: Prisma.StringFilter<"Prenda"> | string
   color?: Prisma.StringFilter<"Prenda"> | string
   temporada?: Prisma.StringNullableFilter<"Prenda"> | string | null
+  etiquetas?: Prisma.StringNullableFilter<"Prenda"> | string | null
   marca?: Prisma.StringNullableFilter<"Prenda"> | string | null
   talle?: Prisma.StringNullableFilter<"Prenda"> | string | null
   imagen_url?: Prisma.StringNullableFilter<"Prenda"> | string | null
+  imagen_fileId?: Prisma.StringNullableFilter<"Prenda"> | string | null
   descripcion?: Prisma.StringNullableFilter<"Prenda"> | string | null
   fecha_venta?: Prisma.DateTimeNullableFilter<"Prenda"> | Date | string | null
   precio?: Prisma.FloatNullableFilter<"Prenda"> | number | null
@@ -358,9 +378,11 @@ export type PrendaOrderByWithAggregationInput = {
   tipo?: Prisma.SortOrder
   color?: Prisma.SortOrder
   temporada?: Prisma.SortOrderInput | Prisma.SortOrder
+  etiquetas?: Prisma.SortOrderInput | Prisma.SortOrder
   marca?: Prisma.SortOrderInput | Prisma.SortOrder
   talle?: Prisma.SortOrderInput | Prisma.SortOrder
   imagen_url?: Prisma.SortOrderInput | Prisma.SortOrder
+  imagen_fileId?: Prisma.SortOrderInput | Prisma.SortOrder
   descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_venta?: Prisma.SortOrderInput | Prisma.SortOrder
   precio?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -384,9 +406,11 @@ export type PrendaScalarWhereWithAggregatesInput = {
   tipo?: Prisma.StringWithAggregatesFilter<"Prenda"> | string
   color?: Prisma.StringWithAggregatesFilter<"Prenda"> | string
   temporada?: Prisma.StringNullableWithAggregatesFilter<"Prenda"> | string | null
+  etiquetas?: Prisma.StringNullableWithAggregatesFilter<"Prenda"> | string | null
   marca?: Prisma.StringNullableWithAggregatesFilter<"Prenda"> | string | null
   talle?: Prisma.StringNullableWithAggregatesFilter<"Prenda"> | string | null
   imagen_url?: Prisma.StringNullableWithAggregatesFilter<"Prenda"> | string | null
+  imagen_fileId?: Prisma.StringNullableWithAggregatesFilter<"Prenda"> | string | null
   descripcion?: Prisma.StringNullableWithAggregatesFilter<"Prenda"> | string | null
   fecha_venta?: Prisma.DateTimeNullableWithAggregatesFilter<"Prenda"> | Date | string | null
   precio?: Prisma.FloatNullableWithAggregatesFilter<"Prenda"> | number | null
@@ -401,9 +425,11 @@ export type PrendaCreateInput = {
   tipo: string
   color: string
   temporada?: string | null
+  etiquetas?: string | null
   marca?: string | null
   talle?: string | null
   imagen_url?: string | null
+  imagen_fileId?: string | null
   descripcion?: string | null
   fecha_venta?: Date | string | null
   precio?: number | null
@@ -419,9 +445,11 @@ export type PrendaUncheckedCreateInput = {
   tipo: string
   color: string
   temporada?: string | null
+  etiquetas?: string | null
   marca?: string | null
   talle?: string | null
   imagen_url?: string | null
+  imagen_fileId?: string | null
   descripcion?: string | null
   fecha_venta?: Date | string | null
   precio?: number | null
@@ -436,9 +464,11 @@ export type PrendaUpdateInput = {
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  etiquetas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   marca?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   talle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_venta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   precio?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -454,9 +484,11 @@ export type PrendaUncheckedUpdateInput = {
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  etiquetas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   marca?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   talle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_venta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   precio?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -472,9 +504,11 @@ export type PrendaCreateManyInput = {
   tipo: string
   color: string
   temporada?: string | null
+  etiquetas?: string | null
   marca?: string | null
   talle?: string | null
   imagen_url?: string | null
+  imagen_fileId?: string | null
   descripcion?: string | null
   fecha_venta?: Date | string | null
   precio?: number | null
@@ -489,9 +523,11 @@ export type PrendaUpdateManyMutationInput = {
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  etiquetas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   marca?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   talle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_venta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   precio?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -506,9 +542,11 @@ export type PrendaUncheckedUpdateManyInput = {
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  etiquetas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   marca?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   talle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_venta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   precio?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -534,9 +572,11 @@ export type PrendaCountOrderByAggregateInput = {
   tipo?: Prisma.SortOrder
   color?: Prisma.SortOrder
   temporada?: Prisma.SortOrder
+  etiquetas?: Prisma.SortOrder
   marca?: Prisma.SortOrder
   talle?: Prisma.SortOrder
   imagen_url?: Prisma.SortOrder
+  imagen_fileId?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
   fecha_venta?: Prisma.SortOrder
   precio?: Prisma.SortOrder
@@ -559,9 +599,11 @@ export type PrendaMaxOrderByAggregateInput = {
   tipo?: Prisma.SortOrder
   color?: Prisma.SortOrder
   temporada?: Prisma.SortOrder
+  etiquetas?: Prisma.SortOrder
   marca?: Prisma.SortOrder
   talle?: Prisma.SortOrder
   imagen_url?: Prisma.SortOrder
+  imagen_fileId?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
   fecha_venta?: Prisma.SortOrder
   precio?: Prisma.SortOrder
@@ -577,9 +619,11 @@ export type PrendaMinOrderByAggregateInput = {
   tipo?: Prisma.SortOrder
   color?: Prisma.SortOrder
   temporada?: Prisma.SortOrder
+  etiquetas?: Prisma.SortOrder
   marca?: Prisma.SortOrder
   talle?: Prisma.SortOrder
   imagen_url?: Prisma.SortOrder
+  imagen_fileId?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
   fecha_venta?: Prisma.SortOrder
   precio?: Prisma.SortOrder
@@ -647,9 +691,11 @@ export type PrendaCreateWithoutUsuarioInput = {
   tipo: string
   color: string
   temporada?: string | null
+  etiquetas?: string | null
   marca?: string | null
   talle?: string | null
   imagen_url?: string | null
+  imagen_fileId?: string | null
   descripcion?: string | null
   fecha_venta?: Date | string | null
   precio?: number | null
@@ -664,9 +710,11 @@ export type PrendaUncheckedCreateWithoutUsuarioInput = {
   tipo: string
   color: string
   temporada?: string | null
+  etiquetas?: string | null
   marca?: string | null
   talle?: string | null
   imagen_url?: string | null
+  imagen_fileId?: string | null
   descripcion?: string | null
   fecha_venta?: Date | string | null
   precio?: number | null
@@ -709,9 +757,11 @@ export type PrendaScalarWhereInput = {
   tipo?: Prisma.StringFilter<"Prenda"> | string
   color?: Prisma.StringFilter<"Prenda"> | string
   temporada?: Prisma.StringNullableFilter<"Prenda"> | string | null
+  etiquetas?: Prisma.StringNullableFilter<"Prenda"> | string | null
   marca?: Prisma.StringNullableFilter<"Prenda"> | string | null
   talle?: Prisma.StringNullableFilter<"Prenda"> | string | null
   imagen_url?: Prisma.StringNullableFilter<"Prenda"> | string | null
+  imagen_fileId?: Prisma.StringNullableFilter<"Prenda"> | string | null
   descripcion?: Prisma.StringNullableFilter<"Prenda"> | string | null
   fecha_venta?: Prisma.DateTimeNullableFilter<"Prenda"> | Date | string | null
   precio?: Prisma.FloatNullableFilter<"Prenda"> | number | null
@@ -727,9 +777,11 @@ export type PrendaCreateManyUsuarioInput = {
   tipo: string
   color: string
   temporada?: string | null
+  etiquetas?: string | null
   marca?: string | null
   talle?: string | null
   imagen_url?: string | null
+  imagen_fileId?: string | null
   descripcion?: string | null
   fecha_venta?: Date | string | null
   precio?: number | null
@@ -743,9 +795,11 @@ export type PrendaUpdateWithoutUsuarioInput = {
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  etiquetas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   marca?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   talle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_venta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   precio?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -760,9 +814,11 @@ export type PrendaUncheckedUpdateWithoutUsuarioInput = {
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  etiquetas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   marca?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   talle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_venta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   precio?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -777,9 +833,11 @@ export type PrendaUncheckedUpdateManyWithoutUsuarioInput = {
   tipo?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  etiquetas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   marca?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   talle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_fileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_venta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   precio?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -796,9 +854,11 @@ export type PrendaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   tipo?: boolean
   color?: boolean
   temporada?: boolean
+  etiquetas?: boolean
   marca?: boolean
   talle?: boolean
   imagen_url?: boolean
+  imagen_fileId?: boolean
   descripcion?: boolean
   fecha_venta?: boolean
   precio?: boolean
@@ -815,9 +875,11 @@ export type PrendaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   tipo?: boolean
   color?: boolean
   temporada?: boolean
+  etiquetas?: boolean
   marca?: boolean
   talle?: boolean
   imagen_url?: boolean
+  imagen_fileId?: boolean
   descripcion?: boolean
   fecha_venta?: boolean
   precio?: boolean
@@ -834,9 +896,11 @@ export type PrendaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   tipo?: boolean
   color?: boolean
   temporada?: boolean
+  etiquetas?: boolean
   marca?: boolean
   talle?: boolean
   imagen_url?: boolean
+  imagen_fileId?: boolean
   descripcion?: boolean
   fecha_venta?: boolean
   precio?: boolean
@@ -853,9 +917,11 @@ export type PrendaSelectScalar = {
   tipo?: boolean
   color?: boolean
   temporada?: boolean
+  etiquetas?: boolean
   marca?: boolean
   talle?: boolean
   imagen_url?: boolean
+  imagen_fileId?: boolean
   descripcion?: boolean
   fecha_venta?: boolean
   precio?: boolean
@@ -865,7 +931,7 @@ export type PrendaSelectScalar = {
   id_usuario?: boolean
 }
 
-export type PrendaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_prenda" | "nombre" | "tipo" | "color" | "temporada" | "marca" | "talle" | "imagen_url" | "descripcion" | "fecha_venta" | "precio" | "descuento" | "createdAt" | "updatedAt" | "id_usuario", ExtArgs["result"]["prenda"]>
+export type PrendaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_prenda" | "nombre" | "tipo" | "color" | "temporada" | "etiquetas" | "marca" | "talle" | "imagen_url" | "imagen_fileId" | "descripcion" | "fecha_venta" | "precio" | "descuento" | "createdAt" | "updatedAt" | "id_usuario", ExtArgs["result"]["prenda"]>
 export type PrendaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -887,9 +953,11 @@ export type $PrendaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     tipo: string
     color: string
     temporada: string | null
+    etiquetas: string | null
     marca: string | null
     talle: string | null
     imagen_url: string | null
+    imagen_fileId: string | null
     descripcion: string | null
     fecha_venta: Date | null
     precio: number | null
@@ -1326,9 +1394,11 @@ export interface PrendaFieldRefs {
   readonly tipo: Prisma.FieldRef<"Prenda", 'String'>
   readonly color: Prisma.FieldRef<"Prenda", 'String'>
   readonly temporada: Prisma.FieldRef<"Prenda", 'String'>
+  readonly etiquetas: Prisma.FieldRef<"Prenda", 'String'>
   readonly marca: Prisma.FieldRef<"Prenda", 'String'>
   readonly talle: Prisma.FieldRef<"Prenda", 'String'>
   readonly imagen_url: Prisma.FieldRef<"Prenda", 'String'>
+  readonly imagen_fileId: Prisma.FieldRef<"Prenda", 'String'>
   readonly descripcion: Prisma.FieldRef<"Prenda", 'String'>
   readonly fecha_venta: Prisma.FieldRef<"Prenda", 'DateTime'>
   readonly precio: Prisma.FieldRef<"Prenda", 'Float'>

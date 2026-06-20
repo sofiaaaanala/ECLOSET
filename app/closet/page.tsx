@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Plus } from "lucide-react";
+import { Link, Plus } from "lucide-react";
+import { useRouter } from 'next/navigation';
 
 import ClosetSearch from "@/components/closet/ClosetSearch";
 import ClosetFilters from "@/components/closet/ClosetFilters";
@@ -16,6 +17,7 @@ export default function ClosetPage() {
   const [search, setSearch] = useState("");
   const [categoriaActiva, setCategoriaActiva] =
     useState("Todos");
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPrendas = async () => {
@@ -123,6 +125,7 @@ export default function ClosetPage() {
       {/* BOTON NUEVA PRENDA */}
 
       <button
+        onClick={() => router.push('/prendas/nueva')}
         className="mt-6 w-full rounded-[12px] py-4 flex items-center justify-center gap-2"
         style={{
           background: "#2C3E2D",
