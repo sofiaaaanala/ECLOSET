@@ -2,6 +2,14 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { verifyToken } from '@/lib/auth.js';
 
+import ImageKit from 'imagekit';
+
+const imagekit = new ImageKit({
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+});
+
 // GET: Obtener todas las prendas del usuario autenticado
 export async function GET(request) {
   try {
@@ -53,8 +61,29 @@ export async function POST(request) {
     const descripcion = formData.get('descripcion') || '';
     const etiquetas = formData.get('etiquetas') || '[]';
 
+    const imagenFile = formData.get('imagen');
+
     if (!nombre || !tipo || !talle || !color) {
       return NextResponse.json({ error: 'Nombre, tipo, talle y color son obligatorios' }, { status: 400 });
+    }
+
+    // Subir imagen a ImageKit si se mandó una
+    let imagen_url = null;
+    let imagen_fileId = null;
+
+    if (imagenFile && imagenFile.size > 0) {
+      const bytes = await imagenFile.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+
+      const uploadResponse = await imagekit.upload({
+        file: buffer,
+        fileName: imagenFile.name,
+        folder: '/ecloset/prendas',
+        useUniqueFileName: true,
+      });
+
+      imagen_url = uploadResponse.url;
+      imagen_fileId = uploadResponse.fileId;
     }
 
     const prenda = await prisma.prenda.create({
@@ -66,6 +95,8 @@ export async function POST(request) {
         descripcion,
         etiquetas,
         id_usuario: decoded.id,
+        imagen_url,
+        imagen_fileId,
       },
     });
 

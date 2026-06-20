@@ -41,6 +41,7 @@ model Prenda {
   marca       String?
   talle       String?
   imagen_url  String?
+  imagen_fileId String?
   descripcion String?
   fecha_venta DateTime?
   precio      Float?
