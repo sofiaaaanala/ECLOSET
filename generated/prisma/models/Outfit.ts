@@ -39,9 +39,10 @@ export type OutfitSumAggregateOutputType = {
 export type OutfitMinAggregateOutputType = {
   id_output: number | null
   nombre: string | null
+  categoria: string | null
   descripcion: string | null
-  clima: string | null
-  ocasion: string | null
+  temporada: string | null
+  imagen_url: string | null
   fecha_creacion: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -51,9 +52,10 @@ export type OutfitMinAggregateOutputType = {
 export type OutfitMaxAggregateOutputType = {
   id_output: number | null
   nombre: string | null
+  categoria: string | null
   descripcion: string | null
-  clima: string | null
-  ocasion: string | null
+  temporada: string | null
+  imagen_url: string | null
   fecha_creacion: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -63,9 +65,10 @@ export type OutfitMaxAggregateOutputType = {
 export type OutfitCountAggregateOutputType = {
   id_output: number
   nombre: number
+  categoria: number
   descripcion: number
-  clima: number
-  ocasion: number
+  temporada: number
+  imagen_url: number
   fecha_creacion: number
   createdAt: number
   updatedAt: number
@@ -87,9 +90,10 @@ export type OutfitSumAggregateInputType = {
 export type OutfitMinAggregateInputType = {
   id_output?: true
   nombre?: true
+  categoria?: true
   descripcion?: true
-  clima?: true
-  ocasion?: true
+  temporada?: true
+  imagen_url?: true
   fecha_creacion?: true
   createdAt?: true
   updatedAt?: true
@@ -99,9 +103,10 @@ export type OutfitMinAggregateInputType = {
 export type OutfitMaxAggregateInputType = {
   id_output?: true
   nombre?: true
+  categoria?: true
   descripcion?: true
-  clima?: true
-  ocasion?: true
+  temporada?: true
+  imagen_url?: true
   fecha_creacion?: true
   createdAt?: true
   updatedAt?: true
@@ -111,9 +116,10 @@ export type OutfitMaxAggregateInputType = {
 export type OutfitCountAggregateInputType = {
   id_output?: true
   nombre?: true
+  categoria?: true
   descripcion?: true
-  clima?: true
-  ocasion?: true
+  temporada?: true
+  imagen_url?: true
   fecha_creacion?: true
   createdAt?: true
   updatedAt?: true
@@ -210,9 +216,10 @@ export type OutfitGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 export type OutfitGroupByOutputType = {
   id_output: number
   nombre: string
+  categoria: string | null
   descripcion: string | null
-  clima: string | null
-  ocasion: string | null
+  temporada: string | null
+  imagen_url: string | null
   fecha_creacion: Date
   createdAt: Date
   updatedAt: Date
@@ -245,27 +252,31 @@ export type OutfitWhereInput = {
   NOT?: Prisma.OutfitWhereInput | Prisma.OutfitWhereInput[]
   id_output?: Prisma.IntFilter<"Outfit"> | number
   nombre?: Prisma.StringFilter<"Outfit"> | string
+  categoria?: Prisma.StringNullableFilter<"Outfit"> | string | null
   descripcion?: Prisma.StringNullableFilter<"Outfit"> | string | null
-  clima?: Prisma.StringNullableFilter<"Outfit"> | string | null
-  ocasion?: Prisma.StringNullableFilter<"Outfit"> | string | null
+  temporada?: Prisma.StringNullableFilter<"Outfit"> | string | null
+  imagen_url?: Prisma.StringNullableFilter<"Outfit"> | string | null
   fecha_creacion?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   id_usuario?: Prisma.IntFilter<"Outfit"> | number
   usuario?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  prendas?: Prisma.PrendaListRelationFilter
 }
 
 export type OutfitOrderByWithRelationInput = {
   id_output?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  categoria?: Prisma.SortOrderInput | Prisma.SortOrder
   descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
-  clima?: Prisma.SortOrderInput | Prisma.SortOrder
-  ocasion?: Prisma.SortOrderInput | Prisma.SortOrder
+  temporada?: Prisma.SortOrderInput | Prisma.SortOrder
+  imagen_url?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   id_usuario?: Prisma.SortOrder
   usuario?: Prisma.UserOrderByWithRelationInput
+  prendas?: Prisma.PrendaOrderByRelationAggregateInput
 }
 
 export type OutfitWhereUniqueInput = Prisma.AtLeast<{
@@ -274,22 +285,25 @@ export type OutfitWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.OutfitWhereInput[]
   NOT?: Prisma.OutfitWhereInput | Prisma.OutfitWhereInput[]
   nombre?: Prisma.StringFilter<"Outfit"> | string
+  categoria?: Prisma.StringNullableFilter<"Outfit"> | string | null
   descripcion?: Prisma.StringNullableFilter<"Outfit"> | string | null
-  clima?: Prisma.StringNullableFilter<"Outfit"> | string | null
-  ocasion?: Prisma.StringNullableFilter<"Outfit"> | string | null
+  temporada?: Prisma.StringNullableFilter<"Outfit"> | string | null
+  imagen_url?: Prisma.StringNullableFilter<"Outfit"> | string | null
   fecha_creacion?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   id_usuario?: Prisma.IntFilter<"Outfit"> | number
   usuario?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  prendas?: Prisma.PrendaListRelationFilter
 }, "id_output">
 
 export type OutfitOrderByWithAggregationInput = {
   id_output?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  categoria?: Prisma.SortOrderInput | Prisma.SortOrder
   descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
-  clima?: Prisma.SortOrderInput | Prisma.SortOrder
-  ocasion?: Prisma.SortOrderInput | Prisma.SortOrder
+  temporada?: Prisma.SortOrderInput | Prisma.SortOrder
+  imagen_url?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -307,9 +321,10 @@ export type OutfitScalarWhereWithAggregatesInput = {
   NOT?: Prisma.OutfitScalarWhereWithAggregatesInput | Prisma.OutfitScalarWhereWithAggregatesInput[]
   id_output?: Prisma.IntWithAggregatesFilter<"Outfit"> | number
   nombre?: Prisma.StringWithAggregatesFilter<"Outfit"> | string
+  categoria?: Prisma.StringNullableWithAggregatesFilter<"Outfit"> | string | null
   descripcion?: Prisma.StringNullableWithAggregatesFilter<"Outfit"> | string | null
-  clima?: Prisma.StringNullableWithAggregatesFilter<"Outfit"> | string | null
-  ocasion?: Prisma.StringNullableWithAggregatesFilter<"Outfit"> | string | null
+  temporada?: Prisma.StringNullableWithAggregatesFilter<"Outfit"> | string | null
+  imagen_url?: Prisma.StringNullableWithAggregatesFilter<"Outfit"> | string | null
   fecha_creacion?: Prisma.DateTimeWithAggregatesFilter<"Outfit"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Outfit"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Outfit"> | Date | string
@@ -318,56 +333,65 @@ export type OutfitScalarWhereWithAggregatesInput = {
 
 export type OutfitCreateInput = {
   nombre: string
+  categoria?: string | null
   descripcion?: string | null
-  clima?: string | null
-  ocasion?: string | null
+  temporada?: string | null
+  imagen_url?: string | null
   fecha_creacion?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
   usuario: Prisma.UserCreateNestedOneWithoutOutfitsInput
+  prendas?: Prisma.PrendaCreateNestedManyWithoutOutfitsInput
 }
 
 export type OutfitUncheckedCreateInput = {
   id_output?: number
   nombre: string
+  categoria?: string | null
   descripcion?: string | null
-  clima?: string | null
-  ocasion?: string | null
+  temporada?: string | null
+  imagen_url?: string | null
   fecha_creacion?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
   id_usuario: number
+  prendas?: Prisma.PrendaUncheckedCreateNestedManyWithoutOutfitsInput
 }
 
 export type OutfitUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clima?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ocasion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UserUpdateOneRequiredWithoutOutfitsNestedInput
+  prendas?: Prisma.PrendaUpdateManyWithoutOutfitsNestedInput
 }
 
 export type OutfitUncheckedUpdateInput = {
   id_output?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clima?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ocasion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_usuario?: Prisma.IntFieldUpdateOperationsInput | number
+  prendas?: Prisma.PrendaUncheckedUpdateManyWithoutOutfitsNestedInput
 }
 
 export type OutfitCreateManyInput = {
   id_output?: number
   nombre: string
+  categoria?: string | null
   descripcion?: string | null
-  clima?: string | null
-  ocasion?: string | null
+  temporada?: string | null
+  imagen_url?: string | null
   fecha_creacion?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -376,9 +400,10 @@ export type OutfitCreateManyInput = {
 
 export type OutfitUpdateManyMutationInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clima?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ocasion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -387,9 +412,10 @@ export type OutfitUpdateManyMutationInput = {
 export type OutfitUncheckedUpdateManyInput = {
   id_output?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clima?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ocasion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -409,9 +435,10 @@ export type OutfitOrderByRelationAggregateInput = {
 export type OutfitCountOrderByAggregateInput = {
   id_output?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  categoria?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  clima?: Prisma.SortOrder
-  ocasion?: Prisma.SortOrder
+  temporada?: Prisma.SortOrder
+  imagen_url?: Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -426,9 +453,10 @@ export type OutfitAvgOrderByAggregateInput = {
 export type OutfitMaxOrderByAggregateInput = {
   id_output?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  categoria?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  clima?: Prisma.SortOrder
-  ocasion?: Prisma.SortOrder
+  temporada?: Prisma.SortOrder
+  imagen_url?: Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -438,9 +466,10 @@ export type OutfitMaxOrderByAggregateInput = {
 export type OutfitMinOrderByAggregateInput = {
   id_output?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  categoria?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
-  clima?: Prisma.SortOrder
-  ocasion?: Prisma.SortOrder
+  temporada?: Prisma.SortOrder
+  imagen_url?: Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -494,25 +523,67 @@ export type OutfitUncheckedUpdateManyWithoutUsuarioNestedInput = {
   deleteMany?: Prisma.OutfitScalarWhereInput | Prisma.OutfitScalarWhereInput[]
 }
 
+export type OutfitCreateNestedManyWithoutPrendasInput = {
+  create?: Prisma.XOR<Prisma.OutfitCreateWithoutPrendasInput, Prisma.OutfitUncheckedCreateWithoutPrendasInput> | Prisma.OutfitCreateWithoutPrendasInput[] | Prisma.OutfitUncheckedCreateWithoutPrendasInput[]
+  connectOrCreate?: Prisma.OutfitCreateOrConnectWithoutPrendasInput | Prisma.OutfitCreateOrConnectWithoutPrendasInput[]
+  connect?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+}
+
+export type OutfitUncheckedCreateNestedManyWithoutPrendasInput = {
+  create?: Prisma.XOR<Prisma.OutfitCreateWithoutPrendasInput, Prisma.OutfitUncheckedCreateWithoutPrendasInput> | Prisma.OutfitCreateWithoutPrendasInput[] | Prisma.OutfitUncheckedCreateWithoutPrendasInput[]
+  connectOrCreate?: Prisma.OutfitCreateOrConnectWithoutPrendasInput | Prisma.OutfitCreateOrConnectWithoutPrendasInput[]
+  connect?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+}
+
+export type OutfitUpdateManyWithoutPrendasNestedInput = {
+  create?: Prisma.XOR<Prisma.OutfitCreateWithoutPrendasInput, Prisma.OutfitUncheckedCreateWithoutPrendasInput> | Prisma.OutfitCreateWithoutPrendasInput[] | Prisma.OutfitUncheckedCreateWithoutPrendasInput[]
+  connectOrCreate?: Prisma.OutfitCreateOrConnectWithoutPrendasInput | Prisma.OutfitCreateOrConnectWithoutPrendasInput[]
+  upsert?: Prisma.OutfitUpsertWithWhereUniqueWithoutPrendasInput | Prisma.OutfitUpsertWithWhereUniqueWithoutPrendasInput[]
+  set?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+  disconnect?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+  delete?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+  connect?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+  update?: Prisma.OutfitUpdateWithWhereUniqueWithoutPrendasInput | Prisma.OutfitUpdateWithWhereUniqueWithoutPrendasInput[]
+  updateMany?: Prisma.OutfitUpdateManyWithWhereWithoutPrendasInput | Prisma.OutfitUpdateManyWithWhereWithoutPrendasInput[]
+  deleteMany?: Prisma.OutfitScalarWhereInput | Prisma.OutfitScalarWhereInput[]
+}
+
+export type OutfitUncheckedUpdateManyWithoutPrendasNestedInput = {
+  create?: Prisma.XOR<Prisma.OutfitCreateWithoutPrendasInput, Prisma.OutfitUncheckedCreateWithoutPrendasInput> | Prisma.OutfitCreateWithoutPrendasInput[] | Prisma.OutfitUncheckedCreateWithoutPrendasInput[]
+  connectOrCreate?: Prisma.OutfitCreateOrConnectWithoutPrendasInput | Prisma.OutfitCreateOrConnectWithoutPrendasInput[]
+  upsert?: Prisma.OutfitUpsertWithWhereUniqueWithoutPrendasInput | Prisma.OutfitUpsertWithWhereUniqueWithoutPrendasInput[]
+  set?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+  disconnect?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+  delete?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+  connect?: Prisma.OutfitWhereUniqueInput | Prisma.OutfitWhereUniqueInput[]
+  update?: Prisma.OutfitUpdateWithWhereUniqueWithoutPrendasInput | Prisma.OutfitUpdateWithWhereUniqueWithoutPrendasInput[]
+  updateMany?: Prisma.OutfitUpdateManyWithWhereWithoutPrendasInput | Prisma.OutfitUpdateManyWithWhereWithoutPrendasInput[]
+  deleteMany?: Prisma.OutfitScalarWhereInput | Prisma.OutfitScalarWhereInput[]
+}
+
 export type OutfitCreateWithoutUsuarioInput = {
   nombre: string
+  categoria?: string | null
   descripcion?: string | null
-  clima?: string | null
-  ocasion?: string | null
+  temporada?: string | null
+  imagen_url?: string | null
   fecha_creacion?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  prendas?: Prisma.PrendaCreateNestedManyWithoutOutfitsInput
 }
 
 export type OutfitUncheckedCreateWithoutUsuarioInput = {
   id_output?: number
   nombre: string
+  categoria?: string | null
   descripcion?: string | null
-  clima?: string | null
-  ocasion?: string | null
+  temporada?: string | null
+  imagen_url?: string | null
   fecha_creacion?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
+  prendas?: Prisma.PrendaUncheckedCreateNestedManyWithoutOutfitsInput
 }
 
 export type OutfitCreateOrConnectWithoutUsuarioInput = {
@@ -546,21 +617,69 @@ export type OutfitScalarWhereInput = {
   NOT?: Prisma.OutfitScalarWhereInput | Prisma.OutfitScalarWhereInput[]
   id_output?: Prisma.IntFilter<"Outfit"> | number
   nombre?: Prisma.StringFilter<"Outfit"> | string
+  categoria?: Prisma.StringNullableFilter<"Outfit"> | string | null
   descripcion?: Prisma.StringNullableFilter<"Outfit"> | string | null
-  clima?: Prisma.StringNullableFilter<"Outfit"> | string | null
-  ocasion?: Prisma.StringNullableFilter<"Outfit"> | string | null
+  temporada?: Prisma.StringNullableFilter<"Outfit"> | string | null
+  imagen_url?: Prisma.StringNullableFilter<"Outfit"> | string | null
   fecha_creacion?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Outfit"> | Date | string
   id_usuario?: Prisma.IntFilter<"Outfit"> | number
 }
 
+export type OutfitCreateWithoutPrendasInput = {
+  nombre: string
+  categoria?: string | null
+  descripcion?: string | null
+  temporada?: string | null
+  imagen_url?: string | null
+  fecha_creacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usuario: Prisma.UserCreateNestedOneWithoutOutfitsInput
+}
+
+export type OutfitUncheckedCreateWithoutPrendasInput = {
+  id_output?: number
+  nombre: string
+  categoria?: string | null
+  descripcion?: string | null
+  temporada?: string | null
+  imagen_url?: string | null
+  fecha_creacion?: Date | string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  id_usuario: number
+}
+
+export type OutfitCreateOrConnectWithoutPrendasInput = {
+  where: Prisma.OutfitWhereUniqueInput
+  create: Prisma.XOR<Prisma.OutfitCreateWithoutPrendasInput, Prisma.OutfitUncheckedCreateWithoutPrendasInput>
+}
+
+export type OutfitUpsertWithWhereUniqueWithoutPrendasInput = {
+  where: Prisma.OutfitWhereUniqueInput
+  update: Prisma.XOR<Prisma.OutfitUpdateWithoutPrendasInput, Prisma.OutfitUncheckedUpdateWithoutPrendasInput>
+  create: Prisma.XOR<Prisma.OutfitCreateWithoutPrendasInput, Prisma.OutfitUncheckedCreateWithoutPrendasInput>
+}
+
+export type OutfitUpdateWithWhereUniqueWithoutPrendasInput = {
+  where: Prisma.OutfitWhereUniqueInput
+  data: Prisma.XOR<Prisma.OutfitUpdateWithoutPrendasInput, Prisma.OutfitUncheckedUpdateWithoutPrendasInput>
+}
+
+export type OutfitUpdateManyWithWhereWithoutPrendasInput = {
+  where: Prisma.OutfitScalarWhereInput
+  data: Prisma.XOR<Prisma.OutfitUpdateManyMutationInput, Prisma.OutfitUncheckedUpdateManyWithoutPrendasInput>
+}
+
 export type OutfitCreateManyUsuarioInput = {
   id_output?: number
   nombre: string
+  categoria?: string | null
   descripcion?: string | null
-  clima?: string | null
-  ocasion?: string | null
+  temporada?: string | null
+  imagen_url?: string | null
   fecha_creacion?: Date | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -568,57 +687,133 @@ export type OutfitCreateManyUsuarioInput = {
 
 export type OutfitUpdateWithoutUsuarioInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clima?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ocasion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prendas?: Prisma.PrendaUpdateManyWithoutOutfitsNestedInput
 }
 
 export type OutfitUncheckedUpdateWithoutUsuarioInput = {
   id_output?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clima?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ocasion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prendas?: Prisma.PrendaUncheckedUpdateManyWithoutOutfitsNestedInput
 }
 
 export type OutfitUncheckedUpdateManyWithoutUsuarioInput = {
   id_output?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clima?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ocasion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type OutfitUpdateWithoutPrendasInput = {
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UserUpdateOneRequiredWithoutOutfitsNestedInput
+}
+
+export type OutfitUncheckedUpdateWithoutPrendasInput = {
+  id_output?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  id_usuario?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type OutfitUncheckedUpdateManyWithoutPrendasInput = {
+  id_output?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  categoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  temporada?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imagen_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  id_usuario?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+
+/**
+ * Count Type OutfitCountOutputType
+ */
+
+export type OutfitCountOutputType = {
+  prendas: number
+}
+
+export type OutfitCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  prendas?: boolean | OutfitCountOutputTypeCountPrendasArgs
+}
+
+/**
+ * OutfitCountOutputType without action
+ */
+export type OutfitCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OutfitCountOutputType
+   */
+  select?: Prisma.OutfitCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * OutfitCountOutputType without action
+ */
+export type OutfitCountOutputTypeCountPrendasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PrendaWhereInput
+}
 
 
 export type OutfitSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_output?: boolean
   nombre?: boolean
+  categoria?: boolean
   descripcion?: boolean
-  clima?: boolean
-  ocasion?: boolean
+  temporada?: boolean
+  imagen_url?: boolean
   fecha_creacion?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   id_usuario?: boolean
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  prendas?: boolean | Prisma.Outfit$prendasArgs<ExtArgs>
+  _count?: boolean | Prisma.OutfitCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["outfit"]>
 
 export type OutfitSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_output?: boolean
   nombre?: boolean
+  categoria?: boolean
   descripcion?: boolean
-  clima?: boolean
-  ocasion?: boolean
+  temporada?: boolean
+  imagen_url?: boolean
   fecha_creacion?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -629,9 +824,10 @@ export type OutfitSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type OutfitSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_output?: boolean
   nombre?: boolean
+  categoria?: boolean
   descripcion?: boolean
-  clima?: boolean
-  ocasion?: boolean
+  temporada?: boolean
+  imagen_url?: boolean
   fecha_creacion?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -642,18 +838,21 @@ export type OutfitSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type OutfitSelectScalar = {
   id_output?: boolean
   nombre?: boolean
+  categoria?: boolean
   descripcion?: boolean
-  clima?: boolean
-  ocasion?: boolean
+  temporada?: boolean
+  imagen_url?: boolean
   fecha_creacion?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   id_usuario?: boolean
 }
 
-export type OutfitOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_output" | "nombre" | "descripcion" | "clima" | "ocasion" | "fecha_creacion" | "createdAt" | "updatedAt" | "id_usuario", ExtArgs["result"]["outfit"]>
+export type OutfitOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_output" | "nombre" | "categoria" | "descripcion" | "temporada" | "imagen_url" | "fecha_creacion" | "createdAt" | "updatedAt" | "id_usuario", ExtArgs["result"]["outfit"]>
 export type OutfitInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  prendas?: boolean | Prisma.Outfit$prendasArgs<ExtArgs>
+  _count?: boolean | Prisma.OutfitCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OutfitIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -666,13 +865,15 @@ export type $OutfitPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name: "Outfit"
   objects: {
     usuario: Prisma.$UserPayload<ExtArgs>
+    prendas: Prisma.$PrendaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id_output: number
     nombre: string
+    categoria: string | null
     descripcion: string | null
-    clima: string | null
-    ocasion: string | null
+    temporada: string | null
+    imagen_url: string | null
     fecha_creacion: Date
     createdAt: Date
     updatedAt: Date
@@ -1072,6 +1273,7 @@ readonly fields: OutfitFieldRefs;
 export interface Prisma__OutfitClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   usuario<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  prendas<T extends Prisma.Outfit$prendasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Outfit$prendasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrendaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1103,9 +1305,10 @@ export interface Prisma__OutfitClient<T, Null = never, ExtArgs extends runtime.T
 export interface OutfitFieldRefs {
   readonly id_output: Prisma.FieldRef<"Outfit", 'Int'>
   readonly nombre: Prisma.FieldRef<"Outfit", 'String'>
+  readonly categoria: Prisma.FieldRef<"Outfit", 'String'>
   readonly descripcion: Prisma.FieldRef<"Outfit", 'String'>
-  readonly clima: Prisma.FieldRef<"Outfit", 'String'>
-  readonly ocasion: Prisma.FieldRef<"Outfit", 'String'>
+  readonly temporada: Prisma.FieldRef<"Outfit", 'String'>
+  readonly imagen_url: Prisma.FieldRef<"Outfit", 'String'>
   readonly fecha_creacion: Prisma.FieldRef<"Outfit", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Outfit", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Outfit", 'DateTime'>
@@ -1506,6 +1709,30 @@ export type OutfitDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Limit how many Outfits to delete.
    */
   limit?: number
+}
+
+/**
+ * Outfit.prendas
+ */
+export type Outfit$prendasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Prenda
+   */
+  select?: Prisma.PrendaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Prenda
+   */
+  omit?: Prisma.PrendaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrendaInclude<ExtArgs> | null
+  where?: Prisma.PrendaWhereInput
+  orderBy?: Prisma.PrendaOrderByWithRelationInput | Prisma.PrendaOrderByWithRelationInput[]
+  cursor?: Prisma.PrendaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PrendaScalarFieldEnum | Prisma.PrendaScalarFieldEnum[]
 }
 
 /**

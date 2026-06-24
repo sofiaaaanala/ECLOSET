@@ -114,9 +114,10 @@ export type PrendaScalarFieldEnum = (typeof PrendaScalarFieldEnum)[keyof typeof 
 export const OutfitScalarFieldEnum = {
   id_output: 'id_output',
   nombre: 'nombre',
+  categoria: 'categoria',
   descripcion: 'descripcion',
-  clima: 'clima',
-  ocasion: 'ocasion',
+  temporada: 'temporada',
+  imagen_url: 'imagen_url',
   fecha_creacion: 'fecha_creacion',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
