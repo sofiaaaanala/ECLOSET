@@ -10,7 +10,7 @@ export default function RegisterPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     
@@ -46,11 +46,15 @@ export default function RegisterPage() {
       localStorage.setItem('user', JSON.stringify(data.user));
       router.push('/onboarding');
     } catch (err) {
-      setError(err.message);
+      if (err instanceof Error) {
+        setError(err.message); // Acá TypeScript ya sabe que tiene la propiedad message
+      } else {
+        setError("Ocurrió un error inesperado"); // Caso alternativo por seguridad
+      }
     } finally {
-      setLoading(false);
+
     }
-  };
+  };  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">

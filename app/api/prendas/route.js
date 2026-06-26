@@ -94,7 +94,14 @@ import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { verifyToken } from '@/lib/auth.js';
 
->>>>>>> c288ec095e3c1a150ec685593bd5da517f6f53ac
+import ImageKit from 'imagekit';
+
+const imagekit = new ImageKit({
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+});
+
 // GET: Obtener todas las prendas del usuario autenticado
 export async function GET(request) {
   try {
@@ -146,27 +153,47 @@ export async function POST(request) {
     const nombre = formData.get('nombre');
     const tipo = formData.get('tipo');
     const talle = formData.get('talle');
-    const color = formData.get('color');
+    const color = formData.get('color') || '';
     const descripcion = formData.get('descripcion') || '';
     const etiquetas = formData.get('etiquetas') || '[]';
 
-    if (!nombre || !tipo || !talle || !color) {
-      return NextResponse.json({ error: 'Nombre, tipo, talle y color son obligatorios' }, { status: 400 });
+    const imagenFile = formData.get('imagen');
+
+    if (!nombre || !tipo || !talle) {
+      return NextResponse.json({ error: 'Nombre, tipo y talle son obligatorios' }, { status: 400 });
     }
 
-<<<<<<< HEAD
-    const prenda = await prisma.prendas.create({
-=======
+    // Subir imagen a ImageKit si se mandó una
+    let imagen_url = null;
+    let imagen_fileId = null;
+
+    if (imagenFile && imagenFile.size > 0) {
+      const bytes = await imagenFile.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+
+      const uploadResponse = await imagekit.upload({
+        file: buffer,
+        fileName: imagenFile.name,
+        folder: '/ecloset/prendas',
+        useUniqueFileName: true,
+      });
+
+      imagen_url = uploadResponse.url;
+      imagen_fileId = uploadResponse.fileId;
+    }
+
     const prenda = await prisma.prenda.create({
 >>>>>>> c288ec095e3c1a150ec685593bd5da517f6f53ac
       data: {
         nombre,
         tipo,
         talle,
-        color,
+        color: color || "",
         descripcion,
         etiquetas,
         id_usuario: decoded.id,
+        imagen_url,
+        imagen_fileId,
       },
     });
 
