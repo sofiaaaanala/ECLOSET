@@ -246,7 +246,9 @@ export default function HomePage() {
             color: "#F9F5F0",
           }}
         >
+        <Link href="/closet" className="text-[11px] uppercase tracking-[0.18em]">
           Entrar a mi closet
+        </Link>
         </button>
       </section>
           <BottomNavigation />
