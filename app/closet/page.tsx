@@ -136,6 +136,21 @@ export default function ClosetPage() {
         NUEVA PRENDA
       </button>
 
+
+            {/* BOTON NUEVO OUTFIT */}
+
+      <button
+        onClick={() => router.push('/outfits')}
+        className="mt-6 w-full rounded-[12px] py-4 flex items-center justify-center gap-2"
+        style={{
+          background: "#2C3E2D",
+          color: "#F9F5F0",
+        }}
+      >
+        <Plus size={18} />
+        NUEVO OUTFIT
+      </button>
+
       {/* BUSCADOR */}
 
       <section className="mt-6">

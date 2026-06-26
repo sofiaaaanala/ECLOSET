@@ -74,8 +74,9 @@ export default function OutfitsPage() {
 
             <p className="uppercase text-[10px] tracking-[0.18em]"
             style={{color:'#6b6b60'}}>
-
-              Tu armario digital
+              <Link href="/closet">
+                ← Vuelve a tu armario digital
+              </Link>
 
             </p>
 
@@ -205,7 +206,7 @@ export default function OutfitsPage() {
 
         <Link
         href="/outfits/crear"
-        className="rounded-[28px] flex flex-col items-center justify-center min-h-[290px]"
+        className="rounded-[28px] flex flex-col items-center justify-center min-h-72.5"
         style={{
           border:'2px dashed #A8C5A0'
         }}
